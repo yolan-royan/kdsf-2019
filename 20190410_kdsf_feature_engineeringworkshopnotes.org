@@ -4,12 +4,8 @@
 - Kaggle Days San Francisco
 * Resources
 
-** Kaggle 
-https://www.kaggle.com/dmitrylarko/kaggledays-sf-1-amazon-baseline
-
-** Presentation notes 
-On slack
-On slack
+- Kaggle kernels available [[https://www.kaggle.com/dmitrylarko/kaggledays-sf-1-amazon-baseline][here]]
+- Presentation notes on slack
 
 * An overview of the talk 
 
