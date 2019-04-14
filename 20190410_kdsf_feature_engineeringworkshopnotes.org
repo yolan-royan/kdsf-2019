@@ -1,0 +1,80 @@
+* Feature Engineering Notes
+** Presented by Dmitry Larko
+** 10 Apr 2018, Fairmont hotel
+** Kaggle Days San Francisco
+* Resources
+
+** Kaggle Kernels 
+** Presentation notes 
+On slack
+* An overview of the talk 
+
+The main focus of this workshop was on feature engineering for categorical variables. Broadly speaking, we can encode the categorical variables in two ways: 
+
+1. Unsupervised - we ignore the target variable 
+2. Supervised - we use the target variable when deciding what to do 
+* The other topics
+
+Most of the stuff you can get from working through the notebooks. These are extra notes i've taken that sort of deviated from the main notebook. 
+
+I think they might release the presentation. 
+
+* Unsupervised feature engineering  
+
+One of the benefits is that we can use the data provided in the test
+set to glean additional information (but bear in mind that this might
+not be realistic in a real world situation)
+
+** One-hot encoding 
+
+The traditional way. However this can make your data very big and tree models don't like sparse encodings in any case.  
+
+** Random assignment 
+
+The idea is to just assign random numbers to the levels. The new variable then becomes continuous. .We can do this multiple times for a single column and chuck them into a machine learning model to see what happens. Dmitri mentioned that this works surprisingly well. 
+
+What you can also do is vary the distributions of random numbers when
+doing random assignment.
+
+*** How to justify doing this to muggles
+The random assignment is in a way a sort of ranking on the data. if we use multiple random assignments on the same columns and then using a tree algorithm, we can get more subsplits on the data to make some sort of sense of the categorical feature 
+
+*** What about imbalanced classes
+We usually upsample or downsample but ultimately this is dependent on the problem. Key questions from the business side is what sort of true positive or false positive we're willing to tolerate
+
+*** Other questions on interpretability
+Best practice is to use linear models and concentrate on feature engineering. Dmitry made an important note here that feature engineering are essentially zero level models. It's better to have a simpler model running on top of more complex features (you can do stuff like plot model performance on complex features)
+
+
+
+** Sparsifying the data and then using SVD
+
+Not sure about this, check the kernel for more info  
+* A random foray into feature importance
+
+At this point in the presentation, someone asked a question and we somehow ended up on the subject of feature selection 
+
+** Beware: feature importance by an algorithm is biased to the algorithm 
+A better way is to look at what happens to the AUC or logloss when we take the variable out of the model. Significant drop means that the factor is important 
+
+** Isolating a smaller list of features
+Someone asked why not just generate a huge list of features and then let xgb work with the important ones by default
+
+Dmitry said that it's a good idea to get a huge pool of features, whittle them down to a pool of smaller, more significant variables and then run the final models on that smaller list of features
+* Measuring the distribution of train vs test
+
+Works on kaggle but not in real life (because we don't a priori know the distribution of the actual response variable 
+
+* The third notebook 
+
+** The fit-transform paradigm 
+Dmitry uses the fit-transform style of sklearn in order to rapidly prototype and test new things. 
+
+** Finding paired features via tree traversal 
+When some features are commonly used to split the data, we could use those features and see if they don't somehow interact with each other
+
+** Adding noise to a variable to prevent overfitting 
+
+** Tuning the zero-level micromodels 
+Training both usually doesn't work as well in practive. It's better to
+freeze the micromodels and then tune the master model and vice versa
