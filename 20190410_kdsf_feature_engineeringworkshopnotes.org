@@ -21,7 +21,7 @@ The main focus of this workshop was on feature engineering for categorical varia
 
 Most of the stuff you can get from working through the notebooks. These are extra notes i've taken that sort of deviated from the main notebook. 
 
-I think they might release the presentation. 
+I think they might release the video of the talk so that would be great! 
 
 * Unsupervised feature engineering  
 
@@ -56,7 +56,7 @@ Best practice is to use linear models and concentrate on feature engineering. Dm
 Not sure about this, check the kernel for more info  
 * A random foray into feature importance
 
-At this point in the presentation, someone asked a question and we somehow ended up on the subject of feature selection 
+At some point in the presentation, someone asked a question and we somehow ended up on the subject of feature selection 
 
 ** Beware: feature importance by an algorithm is biased to the algorithm 
 A better way is to look at what happens to the AUC or logloss when we take the variable out of the model. Significant drop means that the factor is important 
@@ -65,11 +65,9 @@ A better way is to look at what happens to the AUC or logloss when we take the v
 Someone asked why not just generate a huge list of features and then let xgb work with the important ones by default
 
 Dmitry said that it's a good idea to get a huge pool of features, whittle them down to a pool of smaller, more significant variables and then run the final models on that smaller list of features
-* Measuring the distribution of train vs test
+* Some random notes on the third notebook 
 
-Works on kaggle but not in real life (because we don't a priori know the distribution of the actual response variable 
-
-* The third notebook 
+This one was a particularly complex notebook and there was much more going on in terms of the discussion so I decided to take extra notes. 
 
 ** The fit-transform paradigm 
 Dmitry uses the fit-transform style of sklearn in order to rapidly prototype and test new things. 
@@ -78,7 +76,10 @@ Dmitry uses the fit-transform style of sklearn in order to rapidly prototype and
 When some features are commonly used to split the data, we could use those features and see if they don't somehow interact with each other
 
 ** Adding noise to a variable to prevent overfitting 
-
+See the section in the workbook, it's much easier to follow the code 
 ** Tuning the zero-level micromodels 
 Training both usually doesn't work as well in practive. It's better to
 freeze the micromodels and then tune the master model and vice versa
+** Measuring the distribution of train vs test
+
+Works on kaggle but not in real life (because we don't a priori know the distribution of the actual response variable)
