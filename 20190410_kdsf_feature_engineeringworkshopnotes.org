@@ -1,12 +1,16 @@
 * Feature Engineering Notes
-** Presented by Dmitry Larko
-** 10 Apr 2018, Fairmont hotel
-** Kaggle Days San Francisco
+- Presented by Dmitry Larko
+- 10 Apr 2018, Fairmont hotel
+- Kaggle Days San Francisco
 * Resources
 
-** Kaggle Kernels 
+** Kaggle 
+https://www.kaggle.com/dmitrylarko/kaggledays-sf-1-amazon-baseline
+
 ** Presentation notes 
 On slack
+On slack
+
 * An overview of the talk 
 
 The main focus of this workshop was on feature engineering for categorical variables. Broadly speaking, we can encode the categorical variables in two ways: 
